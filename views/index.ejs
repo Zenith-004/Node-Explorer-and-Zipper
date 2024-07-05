@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer</title>
+</head>
+<body>
+    <h1>Download Your Notes</h1>
+    <ul>
+        <% files.forEach(file => { %>
+            <li>
+                <% if (file.type === 'directory') { %>
+                    <%if(file.name === ' Parent Directory'){%>
+                        <p>Folders will download as zip files. </p>
+                    <%}else{%>
+                    <a href="/download?url=<%= file.url %>"><%= file.name %> (Download)</a>
+                    <%}%>
+                <% } else { %>
+                    <a href="<%= file.url %>"><%= file.name %></a>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
